@@ -9,10 +9,10 @@ from etl.load import load_to_mysql
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
+    format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("pipeline.log", mode='a', encoding='utf-8')
+        logging.FileHandler(r"logs\pipeline.log", mode='a', encoding='utf-8')
     ]
 )
 
@@ -25,7 +25,6 @@ def get_spark_session():
     spark = SparkSession.builder\
                         .master("local[4]")\
                         .appName("spark-porto")\
-                        .config("spark.jars",r"D:\projek\E-commers behavior PySpark\mysql-connector-j-8.1.0.jar")\
                         .config("spark.ui.port", "4050")\
                         .getOrCreate()
     return spark
@@ -56,9 +55,12 @@ def main():
 
     
     # Load to Data Warehouse
-    load_to_mysql(dim_user, "users", 4)
+    load_to_mysql(dim_user, "users", 4, '1500')
     
     logging.info("ETL Pipeline finished successfully ✅")
+
+    logger.info("Stopping Spark session 🛑")
+    spark.stop()
 
 
 if __name__ == "__main__":

@@ -4,7 +4,8 @@ from pyspark.sql import DataFrame
 
 logger = logging.getLogger("etl.load")
 
-def load_to_mysql(df:DataFrame, table_name:str, repartition:int):
+def load_to_mysql(df:DataFrame, table_name:str, repartition:int = 2, batchsize:str = '1000'):
+    logger.info("Start the process to load data to the mysql server 🚀")
     DB_URL = os.getenv("DB_URL")
     DB_NAME = os.getenv("DB_NAME")
     DB_USER = os.getenv("DB_USER")
@@ -14,8 +15,8 @@ def load_to_mysql(df:DataFrame, table_name:str, repartition:int):
         driver = "com.mysql.cj.jdbc.Driver",
         dbtable = table_name,
         user = DB_USER,
-        batchsize = "1500",
+        batchsize = batchsize,
         password = DB_PASS
     ).mode("overwrite").save()
 
-    logger.info(f"Successfully loaded data into {table_name}")
+    logger.info(f"Successfully loaded data into {table_name}✅")
