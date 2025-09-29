@@ -1,7 +1,6 @@
 import logging
 import os
 from pyspark.sql import SparkSession
-import boto3
 
 logger = logging.getLogger("etl.extract")
 
