@@ -100,15 +100,30 @@ logs/etl.log
 
 ---
 
-## 📊 Visualization
+## 📊 Visualization  
 
-Once the data is successfully loaded into MySQL, connect **Power BI** to the database for real-time dashboards.
-Example architecture:
+Setelah data berhasil dimuat ke dalam **MySQL Data Warehouse**, langkah selanjutnya adalah menghubungkan database tersebut dengan **Power BI** untuk membuat dashboard interaktif.  
 
-![Pipeline Architecture](diagrams/pipeline_architecture.jpg)
+Visualisasi ini dibagi menjadi tiga bagian utama:  
 
-![Pipeline Architecture](diagrams/erd.png)
+### 1. Pipeline Architecture  
+Menunjukkan alur end-to-end mulai dari **AWS S3** sebagai data lake, proses transformasi menggunakan **PySpark**, penyimpanan ke **MySQL**, hingga konsumsi data di **Power BI**.  
 
+![Pipeline Architecture](diagrams/pipeline_architecture.jpg)  
+
+---
+
+### 2. Entity Relationship Diagram (ERD)  
+Menggambarkan struktur tabel dan relasi antar entitas di dalam MySQL Data Warehouse. ERD ini membantu memahami bagaimana data disimpan dan dihubungkan untuk mendukung query analitik.  
+
+![ERD](diagrams/erd.png)  
+
+---
+
+### 3. Power BI Dashboard  
+Contoh tampilan hasil akhir berupa dashboard analitik interaktif yang digunakan untuk monitoring serta pengambilan keputusan berbasis data.  
+
+![Power BI Dashboard](diagrams/power_bi.png)  
 ---
 
 ## 🚀 Deployment with Docker
