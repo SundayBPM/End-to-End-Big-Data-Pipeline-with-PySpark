@@ -89,7 +89,10 @@ def main():
 
         
         # Load to Data Warehouse
-        load_to_mysql(df=dim_user, table_name="users", mode="overwrite",repartition= 4, batchsize='1500')
+        load_to_mysql(df=dim_product, table_name="products", mode="overwrite",repartition= 1, batchsize='1500')
+        load_to_mysql(df=dim_user, table_name="users", mode="overwrite",repartition= 4, batchsize='1000')
+        load_to_mysql(df=dim_session, table_name="session", mode="overwrite",repartition= 4, batchsize='1000')
+        load_to_mysql(df=fact_event, table_name="transactions", mode="overwrite",repartition= 10, batchsize='1500')
         logger_main.info("ETL Pipeline finished successfully ✅")
 
     except Exception as e:
