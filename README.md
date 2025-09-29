@@ -107,6 +107,8 @@ Example architecture:
 
 ![Pipeline Architecture](diagrams/pipeline_architecture.jpg)
 
+![Pipeline Architecture](diagrams/erd.png)
+
 ---
 
 ## 🚀 Deployment with Docker
